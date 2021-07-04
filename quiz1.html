@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="http://use.fontawesome.com/e56b8eb60c.js"></script>
+    <title>Quiz Time</title>
+<style>
+ 
+*{
+   margin: 0px;
+   padding: 0px;
+   font-family: sans-serif;
+}
+body{
+    background-color:#38fdcf;
+}
+/* .start{
+  display: none;
+} */
+/* .inst-box{
+  display: none;
+} */
+/* .quiz{
+  display: none;
+} */
+.start,.inst_box,.quiz,.result {
+  
+    background-color: honeydew;
+    
+    border: solid 2px #29cea7 ;
+    border-radius: 5px;
+    transform: translate(-50%,50%);
+  
+}
+.start{
+  position:absolute;
+    top: 50%;
+    left: 50%;
+}
+.inst_box,
+.quiz,.result{
+  position:absolute;
+    top: 100%;
+    left: 50%;
+}
+
+.start,.inst_box{
+    padding: 100px 150px;
+}
+.start_title{
+    font-size: 40px;
+    font-weight:bold;
+}
+.start-btn{
+    margin-top: 20px;
+    margin-left: 70px;
+}
+.start button{
+    font-size: 30px;
+    font-weight:600;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    background-color: #29cea7 ;
+    margin-top: 20px;
+    margin-left: 175px;
+    transform: translate(-50%,50%);
+    cursor: pointer;
+ }
+.inst_box,.quiz,.result{
+
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%,-50%) scale(0.9); 
+}
+
+.activeinst ,.activestart,.activequiz,.activeresult{
+  z-index: 5;
+  opacity: 1;
+  pointer-events: auto;
+  transform: translate(-50%,-50%) scale(1);
+}
+.inst_box .inst_title,.inst_footer,.result_title,.result_footer{
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+      
+}
+.inst_box .inst_title,.result_title{
+    border-bottom: 1px solid #29cea7;
+    margin-bottom: 20px;
+}
+.inst_box .inst_footer,.result .result_footer{
+    margin-top: 20px;
+    border-top: 1px solid #28cca6;
+} 
+.inst_box .inst_list,.question_list ,.options,.result .result_section{
+    margin: 10px;
+    font-weight: 500 ;
+    font-size: 17px;
+}
+.inst_box .inst_list .inst,.question ,.result .result_section{
+    margin-bottom: 10px;
+  }
+.inst_box .inst_list .inst span{
+    color:  #29cea7;
+    font-weight: bold;
+  
+}
+.inst_box  button,.result button{
+ 
+    position: relative;
+    left: 30px;
+    font-size: 30px;
+    font-weight:600;
+    padding: 10px 10px;
+    border-radius: 5px;
+    border: none;
+    background-color: #29cea7 ;
+    transform: translate(-50%,50%);
+    cursor: pointer;
+}
+.exit,.replay{
+    margin-left: 30px;
+    margin-right: 30px;
+}
+.continue,.quit{
+    margin-left: 40px;
+    margin-right: 30px;
+}
+
+.question{
+   border-bottom: 1px solid #29cea7;
+}
+
+.quiz .quiz_title ,.quiz_footer{
+    font-size: 50px;
+    font-weight: 600;
+    background-color: #29cea7;
+    padding: 30px 75px;
+}
+.quiz .question_list{
+    padding: 40px 50px 40px;
+}
+.ques{
+    margin: 10px 0px;
+  
+}
+.quiz_footer{
+    display: flex;
+    justify-content: center;
+}
+.quiz_footer button{
+    margin-bottom: 30px;
+    margin-left:  100px;
+    font-size: 30px;
+    font-weight:600;
+    padding: 10px 10px;
+    border-radius: 5px;
+    border: none;
+    background-color: honeydew ;
+    transform: translate(-50%,50%);
+    cursor: pointer;
+}
+.result{
+  padding: 50px;
+}
+
+</style>
+</head>
+<body>
+  <!--start page-->
+  <div class="start"> 
+    <div class="start_title">Quiz-Play With Me</div>
+  <div class="start_btn"><button type="button"onclick="clickStart()">Start</button></div></div>
+ <!--instruction page-->
+   <div class="inst_box">
+     <div class="inst_title">Instruction To Follow</div>
+     <div class="inst_list">
+        <div class="inst">1.The Game Starts When You Click Continue.</div>
+        <div class="inst">2.The Quiz Contains <span>5 Questions</span> .</div>
+        <div class="inst">3.Each Quiz Contains <span>1 Mark</span>.</div>
+        <div class="inst">4.Total Quiz Time Will Be <span>45 Minutes</span>.</div>
+        <div class="inst">5.Your Score Will Be Displayed After You End Quiz.</div>
+      </div>
+      <div class="inst_footer">
+        <button type="button" class="exit" onclick="clickExit()">Exit</button>
+        <button type="button" class="continue" onclick="clickContinue()">Continue</button</div>
+      </div> 
+   </div> 
+
+    <!--questions-->
+    <div class="quiz">
+      <div class="quiz_title">Quiz Time</div>
+      <div class="question_list">
+     <div class="question"> 
+        <div class="ques"><p>1.Which tag is used for para</p> </div>     
+        <div><label for="q11"> <input type="radio" name="quiz1" id="q11" class="options">a tag </label></div>
+        <div><label for="q12"> <input type="radio" name="quiz1" id="q12" class="options">p  tag</label> </div>
+        <div><label for="q13"> <input type="radio" name="quiz1" id="q13" class="options">body tag</label> </div>
+        <div><label for="q14"> <input type="radio" name="quiz1" id="q14" class="options">br tag</label></div>
+      </div>
+
+
+     <div class="question"> 
+        <div class="ques"><p>2.Types of stylesheet</p> </div>     
+        <div> <label for="q21"> <input type="radio" name="quiz2" id="q21" class="options">Inline</label></div>
+        <div> <label for="q22"> <input type="radio" name="quiz2" id="q22" class="options">External</label></div>
+        <div> <label for="q23"> <input type="radio" name="quiz2" id="q23" class="options">Internal</label></div>
+        <div> <label for="q24"> <input type="radio" name="quiz2" id="q24" class="options">All the above.</label></div>
+      </div>
+    
+
+     <div class="question"> 
+        <div class="ques"><p>3.Which one is not belongs to style</p> </div>    
+        <div> <label for="q31"> <input type="radio" name="quiz3" id="q31"class="options" >bg color</label></div>
+        <div> <label for="q32"> <input type="radio" name="quiz3" id="q32" class="options">color</label></div>
+        <div> <label for="q33"> <input type="radio" name="quiz3" id="q33" class="options">flex</label></div>
+        <div> <label for="q34"> <input type="radio" name="quiz3" id="q34" class="options">card</label></div>
+      </div>
+   
+
+      
+      <div class="question"> 
+        <div class="ques"><p>4.Which one is used for flex property</p> </div>     
+        <div> <label for="q41"> <input type="radio" name="quiz4" id="q41" class="options" >display flex</label></div>
+        <div> <label for="q42"> <input type="radio"  name="quiz4"id="q42" class="options">color</label></div>
+        <div> <label for="q43"> <input type="radio" name="quiz4" id="q43" class="options">body tag</label></div>
+        <div> <label for="q44"> <input type="radio" name="quiz4" id="q44" class="options">all the above</label></div>
+      </div>
+ 
+
+      
+      <div class="question"> 
+        <div class="ques"><p>5.which is not belongs to the position property</p></div>      
+        <div> <label for="q51"> <input type="radio" name="quiz5" id="q51" class="options">Relative</label></div>
+        <div> <label for="q52"> <input type="radio" name="quiz5" id="q52" class="options">absolute</label></div>
+        <div> <label for="q53"> <input type="radio" name="quiz5" id="q53" class="options">all the above</label></div>
+        <div> <label for="q54"> <input type="radio" name="quiz5" id="q54" class="options">d-flex</label></div>
+      </div>
+    </div>
+  <div class="quiz_footer"><button type="button" class="sumbit" onclick="clickSubmit(),displayResult()">Submit</button></div>
+  </div>
+  <!--result box-->
+    <div class="result">
+      <div class="result_title">Result</div>
+  <div class="result_section"></div>
+  <div class="result_footer">
+    <button type="button" class="replay" onclick="clickReplay()">Replay</button>
+    <button type="button" class="quit"onclick="clickQuit()">Quit</button>
+  </div>
+</div>
+  </div>
+
+
+
+
+<script >
+
+//get all elements
+var start=document.querySelector(".start");
+var start_btn=document.querySelector(".start_btn button");
+var inst_box=document.querySelector(".inst_box");          
+var exit_btn=document.querySelector(".inst_footer .exit button");
+var continue_btn=document.querySelector(".inst_footer .continue button");
+var quiz=document.querySelector(".quiz");
+var submit_btn=document.querySelector(".quiz_footer .submit button");
+var result=document.querySelector(".result");
+var reply_btn=document.querySelector(".result .replay button");
+var quit_btn=document.querySelector(".quiz_footer .quit button");
+function clickStart(){
+  // document.getElementsByClassName("start")
+  start.style.display="none";
+  
+   inst_box.classList.add("activeinst");
+  
+}
+function clickExit(){
+  inst_box.classList.remove("activeinst");
+  start.style.display="";
+}
+function clickContinue(){
+  inst_box.classList.remove("activeinst");
+  quiz.classList.add("activequiz");
+ 
+}
+function clickSubmit(){
+  quiz.classList.remove("activequiz");
+  result.classList.add("activeresult");
+ 
+}
+function clickReplay(){
+  result.classList.remove("activeresult");
+  quiz.classList.add("activequiz");
+ 
+}
+function clickQuit(){
+  result.classList.remove("activeresult");
+  start.classList.add("activestart");
+  start.style.display="";
+}
+
+
+function displayResult(){
+  var ele=document.getElementsByTagName("input");
+  document.getElementsByClassName("result_section").innerHTML="";
+for ( i = 0; i < ele.length; i++) {
+  if (ele[i].type="radio") {
+    if(ele[i].checked){
+document.getElementsByClassName("result_section").innerHTML+=ele[i].value;
+    
+  }
+  
+}
+}
+}
+
+</script>
+
+
+
+
+</body>
+</html>
